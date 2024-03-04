@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "63ee1f28709369d2ea7cacdb13a59c7e",
+    "content-hash": "d951606ebbf4627cff84264fa05be231",
     "packages": [
         {
             "name": "brick/math",
@@ -904,7 +904,7 @@
             "time": "2024-02-27T19:57:41+00:00"
         },
         {
-            "name": "shovedotdev/shove-php",
+            "name": "shovedev/shove-php",
             "version": "dev-main",
             "dist": {
                 "type": "path",
@@ -8941,7 +8941,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "shovedotdev/shove-php": 20
+        "shovedev/shove-php": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
