@@ -9,7 +9,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Shove\\Laravel\\Tests\\": "tests",
+            "Shove\\Laravel\\Tests\\": "tests"
         }
     },
     "authors": [
@@ -38,8 +38,7 @@
             "type": "path",
             "url": "../shove-php"
         }
-    ]
-}
+    ],
     "extra": {
         "laravel": {
             "providers": [
