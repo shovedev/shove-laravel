@@ -13,7 +13,9 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/shove.php', 'shove'
+        );
     }
 
     /**
