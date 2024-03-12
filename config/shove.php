@@ -5,5 +5,5 @@ return [
 
     'signing_secret' => env('SHOVE_SIGNING_SECRET', ''),
 
-    'default_queue' => 'default'
+    'default_queue' => env('SHOVE_DEFAULT_QUEUE', 'default'),
 ];
