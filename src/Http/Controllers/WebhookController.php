@@ -2,9 +2,11 @@
 
 namespace Shove\Laravel\Http\Controllers;
 
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Queue\QueueManager;
-use Shove\Laravel\Signature;
+use Illuminate\Support\Facades\Config;
+use Shove\Laravel\Security\Signature;
 
 class WebhookController
 {
@@ -20,9 +22,9 @@ class WebhookController
     protected function ensureValidSignature(Request $request): void
     {
         $signature = new Signature(
-            $request->header('Shove-Signature'), config('shove.signing_secret')
+            $request->header('Shove-Signature'), Config::get('shove.signing_secret')
         );
 
-        abort_unless($signature->isValid($request), 401);
+        abort_unless($signature->isValid($request), 403, 'Invalid signature');
     }
 }

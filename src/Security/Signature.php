@@ -1,6 +1,6 @@
 <?php
 
-namespace Shove\Laravel;
+namespace Shove\Laravel\Security;
 
 use Illuminate\Http\Request;
 

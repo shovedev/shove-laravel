@@ -23,6 +23,8 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot(): void
     {
+        Queue::extend('shove', fn() => new ShoveConnector($this->app['request']));
+
         $this->app->booted(function () {
             config([
                 'queue.connections.shove' => [
@@ -31,8 +33,6 @@ class ServiceProvider extends BaseServiceProvider
                 ],
             ]);
         });
-
-        Queue::extend('shove', fn() => new ShoveConnector($this->app['request']));
 
         $this->publishes([
             __DIR__.'/../../config/shove.php' => config_path('shove.php'),

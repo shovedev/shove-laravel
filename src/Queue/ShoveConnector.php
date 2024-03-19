@@ -5,7 +5,8 @@ namespace Shove\Laravel\Queue;
 use Illuminate\Http\Request;
 use Illuminate\Queue\Connectors\ConnectorInterface;
 use Illuminate\Queue\Queue;
-use Shove\ShoveConnector as ShoveHttpClient;
+use Illuminate\Support\Facades\Config;
+use Shove\Connector\ShoveConnector as ShoveHttpClient;
 
 class ShoveConnector implements ConnectorInterface
 {
@@ -17,11 +18,11 @@ class ShoveConnector implements ConnectorInterface
     {
         return new ShoveQueue(
             new ShoveHttpClient(
-                config('shove.secret', ''),
-                config('shove.api_url')
+                token: Config::get('shove.secret', ''),
+                baseUrl: Config::get('shove.api_url')
             ),
             $this->request,
-            config('shove.default_queue')
+            Config::get('shove.default_queue')
         );
     }
 }

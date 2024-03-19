@@ -6,8 +6,9 @@ use Illuminate\Contracts\Queue\Queue as QueueContract;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Queue\Queue;
-use Shove\JobsCreateRequest;
-use Shove\ShoveConnector as ShoveHttpClient;
+use Shove\Connector\ShoveConnector as ShoveHttpClient;
+use Shove\Laravel\Facades\Shove;
+use Shove\Requests\Jobs\CreateRequest;
 
 class ShoveQueue extends Queue implements QueueContract
 {
@@ -58,12 +59,10 @@ class ShoveQueue extends Queue implements QueueContract
             $queue,
             0,
             function ($data, $queue): void {
-                $this->shove->send(
-                    JobsCreateRequest::make(
-                        queue: $queue ?? 'default',
-                        headers: [],
-                        body: json_decode($data, true)
-                    )
+                Shove::jobs()->create(
+                    queue: $queue ?? 'default',
+                    headers: [],
+                    body: json_decode($data, true)
                 );
             }
         );
@@ -87,5 +86,30 @@ class ShoveQueue extends Queue implements QueueContract
     public function pop($queue = null)
     {
         //
+    }
+
+    public function pushOn($queue, $job, $data = '')
+    {
+        // TODO: Implement pushOn() method.
+    }
+
+    public function laterOn($queue, $delay, $job, $data = '')
+    {
+        // TODO: Implement laterOn() method.
+    }
+
+    public function bulk($jobs, $data = '', $queue = null)
+    {
+        // TODO: Implement bulk() method.
+    }
+
+    public function getConnectionName()
+    {
+        // TODO: Implement getConnectionName() method.
+    }
+
+    public function setConnectionName($name)
+    {
+        // TODO: Implement setConnectionName() method.
     }
 }

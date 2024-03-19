@@ -1,6 +1,6 @@
 <?php
 
-namespace Shove\Tests;
+namespace Shove\Laravel\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

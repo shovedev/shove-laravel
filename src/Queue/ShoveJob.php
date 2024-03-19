@@ -27,4 +27,9 @@ class ShoveJob extends Job implements JobContract
     {
         return $this->job->attempts;
     }
+
+    public function delete()
+    {
+
+    }
 }
