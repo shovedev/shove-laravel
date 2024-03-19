@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Queue\Queue;
 use Shove\Connector\ShoveConnector as ShoveHttpClient;
-use Shove\Laravel\Facades\Shove;
-use Shove\Requests\Jobs\CreateRequest;
 
 class ShoveQueue extends Queue implements QueueContract
 {
@@ -19,10 +17,55 @@ class ShoveQueue extends Queue implements QueueContract
     ) {
     }
 
+    /**
+     * Get the size of the queue.
+     *
+     * @param  string|null  $queue
+     * @return int
+     */
     public function size($queue = null)
+    {
+        return 0;
+    }
+
+    /**
+     * Push a raw payload onto the queue.
+     *
+     * @param  string  $payload
+     * @param  string|null  $queue
+     * @param  array  $options
+     * @return mixed
+     */
+    public function pushRaw($payload, $queue = null, array $options = [])
     {
         //
     }
+
+    /**
+     * Push a new job onto the queue after (n) seconds.
+     *
+     * @param  \DateTimeInterface|\DateInterval|int  $delay
+     * @param  string  $job
+     * @param  mixed  $data
+     * @param  string|null  $queue
+     * @return mixed
+     */
+    public function later($delay, $job, $data = '', $queue = null)
+    {
+        //
+    }
+
+    /**
+     * Pop the next job off of the queue.
+     *
+     * @param  string|null  $queue
+     * @return \Illuminate\Contracts\Queue\Job|null
+     */
+    public function pop($queue = null)
+    {
+        //
+    }
+
 
     public function marshal(): Response
     {
@@ -59,7 +102,7 @@ class ShoveQueue extends Queue implements QueueContract
             $queue,
             0,
             function ($data, $queue): void {
-                Shove::jobs()->create(
+                $this->shove->jobs()->create(
                     queue: $queue ?? 'default',
                     headers: [],
                     body: json_decode($data, true)
@@ -71,45 +114,5 @@ class ShoveQueue extends Queue implements QueueContract
     public function getQueue($queue = null)
     {
         return $queue ?? $this->default;
-    }
-
-    public function pushRaw($payload, $queue = null, array $options = [])
-    {
-        //
-    }
-
-    public function later($delay, $job, $data = '', $queue = null)
-    {
-        //
-    }
-
-    public function pop($queue = null)
-    {
-        //
-    }
-
-    public function pushOn($queue, $job, $data = '')
-    {
-        // TODO: Implement pushOn() method.
-    }
-
-    public function laterOn($queue, $delay, $job, $data = '')
-    {
-        // TODO: Implement laterOn() method.
-    }
-
-    public function bulk($jobs, $data = '', $queue = null)
-    {
-        // TODO: Implement bulk() method.
-    }
-
-    public function getConnectionName()
-    {
-        // TODO: Implement getConnectionName() method.
-    }
-
-    public function setConnectionName($name)
-    {
-        // TODO: Implement setConnectionName() method.
     }
 }
