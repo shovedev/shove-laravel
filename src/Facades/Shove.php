@@ -14,7 +14,7 @@ class Shove extends Facade
         Route::post($endpoint, WebhookController::class);
 
         if (class_exists('Illuminate\Foundation\Http\Middleware\ValidateCsrfToken')) {
-            Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::except([
+            \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::except([
                 $endpoint
             ]);
         }
