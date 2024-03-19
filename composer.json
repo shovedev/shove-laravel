@@ -23,12 +23,12 @@
         "guzzlehttp/guzzle": "^7.8",
         "saloonphp/saloon": "^3.0",
         "shovedev/shove-php": "dev-main",
-        "illuminate/queue": "^11.0",
-        "illuminate/container": "^11.0",
-        "illuminate/contracts": "^11.0",
-        "illuminate/support": "^11.0",
-        "illuminate/http": "^11.0",
-        "illuminate/testing": "^11.0"
+        "illuminate/queue": "^10.0|^11.0",
+        "illuminate/container": "^10.0|^11.0",
+        "illuminate/contracts": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0",
+        "illuminate/http": "^10.0|^11.0",
+        "illuminate/testing": "^10.0|^11.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0",
