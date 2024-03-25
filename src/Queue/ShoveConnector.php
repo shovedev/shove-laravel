@@ -5,24 +5,20 @@ namespace Shove\Laravel\Queue;
 use Illuminate\Http\Request;
 use Illuminate\Queue\Connectors\ConnectorInterface;
 use Illuminate\Queue\Queue;
-use Illuminate\Support\Facades\Config;
-use Shove\Connector\ShoveConnector as ShoveHttpClient;
+use Shove\Connector\ShoveConnector as Shove;
 
 class ShoveConnector implements ConnectorInterface
 {
-    public function __construct(protected Request $request)
+    public function __construct(protected Request $request, protected Shove $client)
     {
     }
 
     public function connect(array $config): Queue
     {
         return new ShoveQueue(
-            new ShoveHttpClient(
-                token: Config::get('shove.secret', ''),
-                baseUrl: Config::get('shove.api_url')
-            ),
+            $this->client,
             $this->request,
-            Config::get('shove.default_queue')
+            $config['default_queue']
         );
     }
 }
