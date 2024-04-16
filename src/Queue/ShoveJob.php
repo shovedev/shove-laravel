@@ -2,6 +2,7 @@
 
 namespace Shove\Laravel\Queue;
 
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Queue\Job as JobContract;
 use Illuminate\Queue\Jobs\Job;
 
@@ -30,6 +31,6 @@ class ShoveJob extends Job implements JobContract
 
     public function delete()
     {
-
+        //
     }
 }

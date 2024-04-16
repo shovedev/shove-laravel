@@ -20,8 +20,13 @@ class Signature
             throw new \RuntimeException('The Shove.dev signing secret is not set in your config.');
         }
 
-        $computedSignature = hash_hmac('sha256', $request->getContent(), $this->signingSecret);
+        $computedSignature = $this->computedSignature($request->getContent(), $this->signingSecret);
 
         return hash_equals($this->signature, $computedSignature);
+    }
+
+    public function computedSignature($value, $secret)
+    {
+        return hash_hmac('sha256', $value, $this->signingSecret);
     }
 }

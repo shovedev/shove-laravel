@@ -74,7 +74,7 @@ class ShoveQueue extends Queue implements QueueContract
         return new Response('OK');
     }
 
-    private function createShoveJob($job): ShoveJob
+    protected function createShoveJob($job): ShoveJob
     {
         return new ShoveJob($this->container, $job);
     }
