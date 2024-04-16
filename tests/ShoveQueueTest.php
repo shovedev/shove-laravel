@@ -51,11 +51,10 @@ class ShoveQueueTest extends TestCase
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function test_can_push_a_job_to_the_queue()
     {
+        $this->expectNotToPerformAssertions();
+
         $jobs = new class {
             public function create($queue, $headers, $body)
             {

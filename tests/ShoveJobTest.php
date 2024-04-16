@@ -9,11 +9,10 @@ use Shove\Laravel\Queue\ShoveJob;
 
 class ShoveJobTest extends TestCase
 {
-    /**
-     * @doesNotPerformAssertions
-     */
     public function test_fire_properly_calls_the_job_handler()
     {
+        $this->expectNotToPerformAssertions();
+
         $handler = m::mock(CallQueuedHandler::class);
         $handler->shouldReceive('fire')->once();
 
