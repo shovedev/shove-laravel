@@ -102,11 +102,14 @@ class ShoveQueue extends Queue implements QueueContract
             $queue,
             0,
             function ($data, $queue): void {
-                $this->shove->jobs()->create(
+                $response = $this->shove->jobs()->create(
                     queue: $queue ?? 'default',
-                    headers: [],
-                    body: json_decode($data, true)
+                    body: json_decode($data, associative: true),
                 );
+
+                if (!$response->successful()) {
+                    throw new \Exception('Failed to push job to Shove. Received status code: '.$response->status());
+                }
             }
         );
     }
