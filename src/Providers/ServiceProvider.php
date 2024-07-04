@@ -28,7 +28,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->app->booted(function () {
             config([
                 'queue.connections.shove' => [
-                    'driver' => 'shove',
+                    'driver' => app()->environment('testing') ? 'sync' : 'shove',
                     'queue' => 'default',
                 ],
             ]);
