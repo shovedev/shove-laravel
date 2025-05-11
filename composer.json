@@ -44,12 +44,5 @@
       "type": "path",
       "url": "../shove-php"
     }
-  ],
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Shove\\Laravel\\Providers\\ServiceProvider"
-      ]
-    }
-  }
+  ]
 }
