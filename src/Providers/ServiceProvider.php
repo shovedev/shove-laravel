@@ -45,4 +45,11 @@ class ServiceProvider extends BaseServiceProvider
             __DIR__.'/../../config/shove.php' => config_path('shove.php'),
         ], 'shove-config');
     }
+
+    public function provides(): array
+    {
+        return [
+            ShoveHttpClient::class,
+        ];
+    }
 }
