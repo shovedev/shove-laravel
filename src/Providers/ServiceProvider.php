@@ -5,6 +5,7 @@ namespace Shove\Laravel\Providers;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Shove\Laravel\Queue\ShoveConnector;
+use Shove\Connector\ShoveConnector as ShoveHttpClient;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -16,6 +17,10 @@ class ServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../../config/shove.php', 'shove'
         );
+
+        $this->app->singleton(ShoveHttpClient::class, function ($app) {
+            return new ShoveHttpClient(config('shove.secret'), config('shove.base_url'));
+        });
     }
 
     /**
