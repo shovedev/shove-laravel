@@ -21,7 +21,7 @@ class ServiceProvider extends BaseServiceProvider
         );
 
         $this->app->singleton(ShoveHttpClient::class, function ($app) {
-            return new ShoveHttpClient(Config::get('shove.secret'), Config::get('shove.base_url'));
+            return new ShoveHttpClient(Config::get('shove.secret'), Config::get('shove.api_url'));
         });
     }
 
