@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e31eb9609c284198157772754d7eb4c0",
+    "content-hash": "5b520625a0af7c73ad0bce78d6ec9010",
     "packages": [
         {
             "name": "brick/math",
@@ -2714,7 +2714,7 @@
             "dist": {
                 "type": "path",
                 "url": "../shove-php",
-                "reference": "449d0761b6b997028debc052ce07c061c28e6156"
+                "reference": "d7d648f03d38ccf5da9fa5a15131cc4eefb5a58f"
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.8",
